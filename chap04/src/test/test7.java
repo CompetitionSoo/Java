@@ -1,15 +1,39 @@
 package test;
 
-public class test7 {	
-	//중첩 for문을 이용하여 방정식 4x+5y=60 의 모든해를 구해서(x,y)형태로 출력하기 
-	// 단 x와 y는 10이하의 자연수이다.
+import java.util.Scanner;
+
+public class test7 {
 	public static void main(String[] args) {
-	for(int x = 1; x <= 10; x++) {
-		for(int y = 1; y <= 10; y++) {
-			if((4*x + 5*y )==60) {
-				System.out.println(x + "" + y);
+		boolean run = true; //반복문의 조건
+		int balance = 0; // 은행잔고
+		Scanner scanner = new Scanner(System.in);
+		
+		while(run) {
+			System.out.println("----------------------------------");
+			System.out.println("1. 예금 |  2. 출금 | 3.  잔고 | 4. 종료");
+			System.out.println("----------------------------------");
+			
+			System.out.print("선택>");
+			int selection = Integer.parseInt (scanner.nextLine());
+			
+			if(selection ==1) {
+				System.out.print("예금액>");
+				int money = Integer.parseInt(scanner.nextLine());
+				balance += money;
+			}else if(selection ==2) {
+				System.out.print("출금액>");
+				int money = Integer.parseInt(scanner.nextLine());
+				if(money > balance) {
+					System.out.println("잔액이부족합니다.");
+				}else {
+					balance -= money;
 				}
-			}
+			}else if(selection == 3) {
+				System.out.println("잔고>" + balance);
+			}else {
+				System.out.println("프로그램 종료");
+				break;				
+		}
 		}
 	}
 }
